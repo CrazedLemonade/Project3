@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      background-color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Make the logo bigger */
+    .navbar-brand img {
+      padding: 0;
+      margin: 0%;
+      margin-bottom: 0;
+      width: 40px; 
+      height: 40px; 
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #ffffff;
+      padding: 20px;
+    }
+    
+    .carousel-inner img {
+      width: 100%;
+      margin: auto;
+      min-height: 200px;
+      max-height: 30%;
+    }
+
+    @media (max-width: 600px) {
+      .carousel-caption {
+        display: none; 
+      }
+    }
+
+    /* Added styling for the new layout */
+    .row {
+      display: flex;
+    }
+
+    .column {
+      flex: 1;
+      padding: 20px;
+      border: 1px solid #ccc; /* Adding a border for better visibility */
+    }
+
+    /* Style for Ingredient List */
+    .ingredient-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .ingredient-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .ingredient-name {
+      margin-right: 10px;
+    }
+
+    .action-buttons {
+      display: flex;
+    }
+
+    .action-button {
+      margin-left: 5px;
+      cursor: pointer;
+    }
+
+    /* Style for User Input */
+    .user-input {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="index.html"><img src="../Project3Images/New Project.png" alt="Logo"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li class="active"><a href="Fridge.html">Fridge</a></li>
+        <li><a href="Recipes.html">Recipes</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <!-- <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="row">
+  <div class="column">
+    <h1>Currently in Fridge</h1>
+    <h4>Lemons x4 <br>
+        Cheddar Cheese 16oz <br>
+        Chicken Breast 100 2lb Packs <br>
+        Carrot(s) 1lb <br>
+        Flank Steak 10 oz <br>
+        Yogurt 32oz<br>
+    </h4>
+  </div>
+  <div class="column">
+    <h1>GROCERY LIST</h1>
+    <!-- User Input Textbox -->
+    <div class="user-input">
+      <input type="text" id="newItem" placeholder="Enter a new item">
+      <button onclick="addItem()">Add</button>
+    </div>
+    <!-- Ingredient List -->
+    <ul class="ingredient-list">
+        <!-- Existing Ingredients -->
+        <li class="ingredient-item">
+            <span class="ingredient-name">chives</span>
+            <div class="action-buttons">
+                <button class="action-button" onclick="removeIngredient(this)">x</button>
+                <button class="action-button" onclick="checkIngredient(this)">✓</button>
+            </div>
+        </li>
+        <!-- Repeat for other ingredients -->
+    </ul>
+  </div>
+</div>
+<center><H2>Relevant Recipes</H2></center>
+
+<footer class="container-fluid text-center">
+  <!-- Add your existing footer content here -->
+</footer>
+
+<script>
+  // JavaScript functions for action buttons
+  function removeIngredient(button) {
+    var listItem = button.closest('.ingredient-item');
+    listItem.parentNode.removeChild(listItem);
+  }
+
+  function checkIngredient(button) {
+    // You can customize this function to mark the ingredient as checked
+    // For example, by adding a class or changing its style
+    var listItem = button.closest('.ingredient-item');
+    listItem.style.textDecoration = 'line-through';
+  }
+
+  // JavaScript function to add a new item
+  function addItem() {
+      var newItemInput = document.getElementById('newItem');
+      var newItemText = newItemInput.value.trim();
+
+      if (newItemText !== '') {
+        var newItem = document.createElement('li');
+        newItem.className = 'ingredient-item';
+
+        var itemName = document.createElement('span');
+        itemName.className = 'ingredient-name';
+        itemName.textContent = newItemText;
+
+        var actionButtons = document.createElement('div');
+        actionButtons.className = 'action-buttons';
+
+        // Create remove button
+        var removeButton = document.createElement('button');
+        removeButton.className = 'action-button';
+        removeButton.textContent = 'x';
+        removeButton.onclick = function () {
+          removeIngredient(removeButton);
+        };
+
+        // Create check button
+        var checkButton = document.createElement('button');
+        checkButton.className = 'action-button';
+        checkButton.textContent = '✓';
+        checkButton.onclick = function () {
+          checkIngredient(checkButton);
+        };
+
+        actionButtons.appendChild(removeButton);
+        actionButtons.appendChild(checkButton);
+        newItem.appendChild(itemName);
+        newItem.appendChild(actionButtons);
+
+        document.querySelector('.ingredient-list').appendChild(newItem);
+
+        newItemInput.value = '';
+      }
+    }
+  </script>
+
+<footer class="container-fluid text-center">
+</footer>
+<hr>
+<div class="row">
+        <div class="col-lg-6 col-md-12 mb-4">
+          <h5 class="mb-3" style="letter-spacing: 2px; color: black;"></h5>
+          
+          <h5 class="mb-3" style="letter-spacing: 2px; color:black ;">Contact Us</h5>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1">
+              <a href="contactMe.html" style="color: black;">Speak To A Representive</a>
+            </li>
+            <li>
+            </li>
+          </ul>
+        </div>
+
+        <style>
+            .availibility {
+                color: black;
+            }
+        </style>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5 class="mb-1" style="letter-spacing: 2px; color: #FFB703;">Representative Hours</h5>
+          <table class="table" style="color: #4f4f4f; border-color: #666;">
+            <tbody>
+              <tr>
+                <td class="availibility">Mon - Fri:</td>
+                <td class="availibility">10am - 3pm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="text-center p-3" style="background-color: #219EBC(0, 0, 0, 0.2);">
+      <p style="color: #FFB703;">© 2023 Copyright</p>
+    </div>
+</footer>
+</body>
+</html>

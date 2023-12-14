@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      background-color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Make the logo bigger */
+    .navbar-brand img {
+      padding: 0;
+      margin: 0%;
+      margin-bottom: 0;
+      width: 40px; 
+      height: 40px; 
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #ffffff;
+      padding: 20px;
+    }
+    
+    .carousel-inner img {
+      width: 100%;
+      margin: auto;
+      min-height: 200px;
+      max-height: 30%;
+    }
+
+    @media (max-width: 600px) {
+      .carousel-caption {
+        display: none; 
+      }
+    }
+
+    /* Added styling for the new layout */
+    .row {
+      display: flex;
+    }
+
+    .column {
+      flex: 1;
+      padding: 20px;
+      border: 1px solid #ccc; /* Adding a border for better visibility */
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="index.html"><img src="../Project3Images/New Project.png" alt="Logo"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Fridge.html">Fridge</a></li>
+        <li class="active"><a href="Recipes.html">Recipes</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<style>
+    .recipe-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      margin: 20px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .recipe-image {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .recipe-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .recipe-description {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+
+<div class="container text-center">    
+  <h3>Check Out Our Featured Recipes</h3><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="recipe-card" onclick="showRecipe('Spaghetti Bolognese', 'A classic Italian dish with meaty tomato sauce.', 'spaghetti_image.jpg')">
+        <img src="../Project3Images/Spaghetti-Bolognese.jpg" class="recipe-image" alt="Spaghetti Bolognese">
+        <div class="recipe-title">Spaghetti Bolognese</div><hr>
+        <div class="recipe-description">
+            <b>Prep Time:</b> 20 Minutes  <br>
+            <b>Ingredients:</b> 10  <br>
+            <b>Servings:</b> 4 <br>
+            <p style="text-align: left;">This Italian Classic is a staple in many italian homes across the nation, The Recipes used here is a made by one of our executive chefs.</h6>
+        </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="recipe-card" onclick="showRecipe('Caprese Salad', 'Fresh tomatoes, mozzarella, and basil drizzled with balsamic glaze.', 'caprese_salad_image.jpg')">
+        <img src="../Project3Images/Caprese.jpeg" class="recipe-image" alt="Caprese Salad">
+        <div class="recipe-title">Caprese Salad</div>
+        <div class="recipe-description">
+            <p><B>Prep Time:</B> 10 Minutes  <br>
+            <b>Ingredients:</b> 5  <br>
+            <b>Servings:</b> 3 <br></p>
+            <p style="text-align: left;">Fresh tomatoes, mozzarella, and basil drizzled with balsamic glaze. All on a bed of succulent lettuce</p></div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="recipe-card" onclick="showRecipe('Chocolate Cake', 'Indulgent chocolate cake with a rich and moist texture.', 'chocolate_cake_image.jpg')">
+        <img src="../Project3Images/cake.jpg" class="recipe-image" alt="Chocolate Cake">
+        <div class="recipe-title">Chocolate Cake</div>
+        <div class="recipe-description">
+            <p><B>Prep Time:</B> 2 hours & 10 Minutes  <br>
+                <b>Ingredients:</b> 8  <br>
+                <b>Servings:</b> 6 <br></p>
+                <p style="text-align: left;">
+                    Delicious Chocolate Cake that is dense, yet airy. 
+                </p></div>
+    </div>
+  </div>
+</div><br>
+
+
+<script>
+  // JavaScript function to show recipe details
+  function showRecipe(title, description, imageUrl) {
+    alert('Recipe: ' + title + '\n Description: ' + description);
+    // You can customize this function to display a modal or redirect to a new page with more details.
+  }
+</script>
+<footer class="container-fluid text-center">
+</footer>
+<hr>
+<div class="row">
+        <div class="col-lg-6 col-md-12 mb-4">
+          <h5 class="mb-3" style="letter-spacing: 2px; color: black;"></h5>
+          
+          <h5 class="mb-3" style="letter-spacing: 2px; color:black ;">Contact Us</h5>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1">
+              <a href="contactMe.html" style="color: black;">Speak To A Representive</a>
+            </li>
+            <li>
+            </li>
+          </ul>
+        </div>
+
+        <style>
+            .availibility {
+                color: black;
+            }
+        </style>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5 class="mb-1" style="letter-spacing: 2px; color: #FFB703;">Representative Hours</h5>
+          <table class="table" style="color: #4f4f4f; border-color: #666;">
+            <tbody>
+              <tr>
+                <td class="availibility">Mon - Fri:</td>
+                <td class="availibility">10am - 3pm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="text-center p-3" style="background-color: #219EBC(0, 0, 0, 0.2);">
+      <p style="color: #FFB703;">© 2023 Copyright</p>
+    </div>
+</footer>
+</body>
+</html>
